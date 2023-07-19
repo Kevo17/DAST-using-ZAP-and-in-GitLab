@@ -21,34 +21,57 @@ During this hands-on lab, participants will gain practical experience in integra
 
 <h2>Program walk-through:</h2>
 
+First, we need to pull ZAP’s stable docker image: <br/>
+```
+docker pull owasp/zap2docker-stable:2.10.0
+ ```
+<br/>
 <p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/SfCRDmu.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
 </p>
+
+<br />
+<br />
+
+Let’s see the usage of ZAP Docker for Baseline Scan: <br/>
+```
+docker run --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py --help
+ ```
+<br/>
+<p align="center">
+<img src="https://i.imgur.com/Ikd44oM.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
+</p>
+
+<br />
+<br />
+
+Let’s run zap-baseline.py with basic options: <br/>
+```
+docker run --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t https://prod-rcgsg0ei.lab.practical-devsecops.training
+ ```
+<br/>
+<p align="center">
+<img src="https://i.imgur.com/mtknTQL.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
+</p>
+
+<br />
+<br />
+
+If you want the output in JSON format, you can use the -J option: <br/>
+```
+docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t https://prod-rcgsg0ei.lab.practical-devsecops.training -J zap-output.json
+ ```
+<br/>
+<p align="center">
+<img src="https://i.imgur.com/b38bGJu.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
+</p>
+
+<br />
+<br />
+
+<img src="https://i.imgur.com/3ot3ebE.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
+
+
 
 <!--
  ```diff
