@@ -57,9 +57,12 @@ docker run --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t https://prod-r
 <br />
 <br />
 
-If you want the output in JSON format, you can use the -J option: <br/>
+Let’s run the scan in GitLab in the YAML configuration file: <br/>
 ```
-docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t https://prod-rcgsg0ei.lab.practical-devsecops.training -J zap-output.json
+- docker pull owasp/zap2docker-stable:2.10.0
+```
+```
+- docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t <YOUR HOST URL> -J zap-output.json
  ```
 <br/>
 <p align="center">
@@ -69,8 +72,10 @@ docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm owasp/zap
 <br />
 <br />
 
+Here is the result of this job: <br/>
+<p align="center">
 <img src="https://i.imgur.com/3ot3ebE.png" height="80%" width="80%" alt="Disk Sanitization Step"/>
-
+</p>
 
 
 <!--
