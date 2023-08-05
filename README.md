@@ -57,7 +57,7 @@ docker run --rm owasp/zap2docker-stable:2.10.0 zap-baseline.py -t https://prod-r
 <br />
 <br />
 
-Let’s run the scan in GitLab in the YAML configuration file: <br/>
+Let’s run the scan in GitLab in the YML configuration file: <br/>
 ```
 - docker pull owasp/zap2docker-stable:2.10.0
 ```
